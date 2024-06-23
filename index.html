@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Who Does(n’t) Target You?</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Fabio Votta, Simon Kruschinski (University of Mainz), Mads Hove, Tom Dobber, Natali Helberger, and Claes de Vreese (University of Amsterdam)" />
+    <script src="libs/header-attrs-2.11/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="ascor.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: bottom, left, title-slide
+
+.title[
+# Who Does(n’t) Target You?
+]
+.subtitle[
+## Mapping the Worldwide Usage of Online Political Microtargeting
+]
+.author[
+### <b>Fabio Votta</b>, Simon Kruschinski <i>(University of Mainz)</i>, Mads Hove, Tom Dobber, Natali Helberger, and Claes de Vreese <i>(University of Amsterdam)</i>
+]
+.date[
+###  <svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;fill:black;" xmlns="http://www.w3.org/2000/svg"> <path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"></path></svg> favstats.github.io/ddc2023 (Slides) <br>  <svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;fill:blue;" xmlns="http://www.w3.org/2000/svg"> <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg> favstats <br>  <svg viewBox="0 0 448 512" style="height:1em;position:relative;display:inline-block;top:.1em;fill:#615ff7;" xmlns="http://www.w3.org/2000/svg"> <path d="M433 179.11c0-97.2-63.71-125.7-63.71-125.7-62.52-28.7-228.56-28.4-290.48 0 0 0-63.72 28.5-63.72 125.7 0 115.7-6.6 259.4 105.63 289.1 40.51 10.7 75.32 13 103.33 11.4 50.81-2.8 79.32-18.1 79.32-18.1l-1.7-36.9s-36.31 11.4-77.12 10.1c-40.41-1.4-83-4.4-89.63-54a102.54 102.54 0 0 1-.9-13.9c85.63 20.9 158.65 9.1 178.75 6.7 56.12-6.7 105-41.3 111.23-72.9 9.8-49.8 9-121.5 9-121.5zm-75.12 125.2h-46.63v-114.2c0-49.7-64-51.6-64 6.9v62.5h-46.33V197c0-58.5-64-56.6-64-6.9v114.2H90.19c0-122.1-5.2-147.9 18.41-175 25.9-28.9 79.82-30.8 103.83 6.1l11.6 19.5 11.6-19.5c24.11-37.1 78.12-34.8 103.83-6.1 23.71 27.3 18.4 53 18.4 175z"></path></svg> <a href="mailto:favstats@fosstodon.org" class="email">favstats@fosstodon.org</a> <br>  <svg viewBox="0 0 448 512" style="height:1em;position:relative;display:inline-block;top:.1em;fill:#0085ff;" xmlns="http://www.w3.org/2000/svg"> <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48z"></path></svg> favstats.bsky.social                                                                     13th October 2023 - DDC Manchester Workshop
+]
+
+---
+
+
+layout: true
+    
+&lt;div class="logo"&gt;&lt;/div&gt; 
+
+
+
+
+---
+
+class: white, middle, center
+
+### .font80[Is Political Microtargeting Destroying Democracy? Or is it a Myth?]
+ 
+ 
+&lt;img src="img/cambridge_analytica.png" width="80%"&gt;
+
+
+
+---
+
+class: white, middle, center
+
+### How does (online) political microtargeting 
+### manifest in practice?
+
+
+![](img/diss.png)
+
+
+---
+
+
+class: white, middle, center
+
+## **Two** Gaps in the Literature
+
+
+#### 1. No or limited data (on actual targeting strategies)
+
+How can we know how microtargeting is used in practice?
+
+&lt;br&gt;
+
+#### 2. Focus on the Global North
+
+Which countries do we study? 
+
+---
+
+
+class: middle, center
+
+### 1. No or limited data (on actual targeting strategies)
+
+#### How can we know how microtargeting is used in practice?
+
+
+---
+
+### Three Sources of Data
+
++ Ad Libraries
+
++ Browser extensions
+
++ Interviews
+
+
+---
+
+
+class: white
+
+
+### Ad Libraries
+
+.pull-left[
+
+
++ Ad Libraries *(e.g. Fowler et al., 2021;  Kruschinski et al., 2022)*
+
+  + Meta Ad Library, Google Ad Transparency Report, etc.
+
+  + some improvements to before
+  
+]
+
+.pull-right[
+
+![](img/adlib.png)
+
+]
+
+
+
+
+---
+
+
+
+class: white
+
+### Ad Libraries
+
+.pull-left[
+
+
++ Ad Libraries *(e.g. Fowler et al., 2021;  Kruschinski et al., 2022)*
+
+  + Meta Ad Library, Google Ad Transparency Report, etc.
+
+  + some improvement to before
+  
+  *however*
+  
+  + inaccurate and lack targeting criteria 
+  
+      + *(Edelson et al., 2020; Leerssen et al., 2019)*
+  
+  + In the EU now provide additional info 
+  
+      + on Meta: targeting based on age, gender, location (*thank you DSA*)
+  
+]
+
+.pull-right[
+
+![](img/adlib.png)
+
+]
+
+
+---
+
+class: white
+
+
+### Browser extensions
+
+
+.pull-left[
+
++ Browser extensions *(López Ortega, 2022; Silva et al., 2020)*
+
+  + Rely on the "Why am I seeing this ad" label 
+
+  + ProPublica, Who Targets Me, NYU Ad Observer, etc.
+
+  + Platform-independent way to retrieve data
+  
+  + enables measurements of effects
+
+]
+
+.pull-right[
+
+![](img/browsers.png)
+
+]
+
+
+---
+
+class: white
+
+### Browser extensions
+
+.pull-left[
+
+
++ Browser extensions *(López Ortega, 2022; Silva et al., 2020)*
+
+  + Rely on the "Why am I seeing this ad" label 
+
+  + ProPublica, Who Targets Me, NYU Ad Observer, etc.
+  
+  + Platform-independent way to retrieve data
+  
+  *however*
+  
+  + Risk of getting banned by platforms (NYU case 2021)
+  
+  + do not always correspond to the targeting criteria used by advertisers *(Andreou et al., 2018)*
+  
+  + who is more likely to sign-up for these browser applications?
+  
+  + only Desktop browsers
+
+]
+
+
+.pull-right[
+
+![](img/browsers.png)
+
+]
+
+---
+
+class: white
+
+### Interviews
+
+.pull-left[
+
+
++ Interviews *(e.g. Kefford et al. 2023)*
+
+  + campaign staff or platform employees
+  
+  + in-depth first-hand knowledge and qualitative data
+  
+]
+
+  
+.pull-right[
+
+![](https://media.istockphoto.com/id/1350903564/vector/hand-holding-the-microphone-flat-design-vector-illustration-live-news-journalist-interview.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=-PMSMRE0hsxiaLkn7QLyas3rEFeSouVe6A7AB3_4MPM=)
+
+]
+
+
+---
+
+class: white
+
+### Interviews
+
+.pull-left[
+
+
++ Interviews *(e.g. Kefford et al. 2023)*
+
+  + campaign staff or platform employees
+  
+  + in-depth first-hand knowledge and qualitative data
+  
+  *however*
+  
+  + campaigns might not be willing to share information
+  
+  + who gets to have access to political parties?
+  
+]
+
+
+  
+.pull-right[
+
+![](https://media.istockphoto.com/id/1350903564/vector/hand-holding-the-microphone-flat-design-vector-illustration-live-news-journalist-interview.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=-PMSMRE0hsxiaLkn7QLyas3rEFeSouVe6A7AB3_4MPM=)
+
+]
+
+
+---
+
+class: middle, center
+
+
+#### current data 
+#### **I N A D E Q U A T E** 
+#### for studying the phenomena (or hard to access)
+
+---
+
+class: middle, center
+
+### 2. Focus on the Global North
+
+#### Which countries do we study? 
+
+---
+
+class: white
+
+### Political microtargeting - a WEIRD issue? .font30[(Aagaard &amp; Marthedal 2023 + own research)]
+
+
+![](img/worldmapss.png)
+
+---
+
+class: white, middle, center
+
+# Recent Developments
+
+---
+
+### Data on Ad Targeting
+
+**Meta Ad Targeting Dataset**
+
++ September 2022 Meta gave *vetted researchers* access to an "ad targeting dataset"
+
+    + Includes **actual** targeting criteria of political ads on the **ad-level**
+    
+    + Coverage
+    
+        + All countries in which political ads run
+        
+        + August 3rd, 2020 - today (monthly updates)
+        
+        + Limited to using data on the Meta internal FORT platform
+  
+        
+---
+
+class: middle, center
+
+### For the first time we can investigate the usage of online political microtargeting at scale and worldwide
+
+**Descriptive analysis of political microtargeting**
+
+
+**Laying the foundation for future microtargeting research**
+
+---
+
+## Research Questions
+
++ RQ1: Assessing the Scale
+
+  + **How prevalent is the use of political microtargeting** across the globe **and which targeting and exclusion strategies** do political campaigns employ?
+  
+--
+
+&lt;!-- How much money do political parties spend on targeted ads vs. ads that are targeted towards entire country?  --&gt;
+
+&lt;!-- Split up by country, party type and family/ideology. --&gt;
+
++ RQ2: Country differences
+
+  + How do different strategies of targeting and exclusion manifest across **countries**?
+
+--
+
++ RQ3: Party differences
+
+  + How do different strategies of targeting and exclusion manifest across **parties**?
+
+&lt;!-- 1.	who are the most targeted audiences --&gt;
+&lt;!-- 2.	who are the most excluded audiences --&gt;
+&lt;!-- 3.	how this differs by country/party type and family/ideology --&gt;
+
+
+---
+
+class: white
+
+## Target Sample
+
+.leftcol30[
+
++ All **national-level** elections between *August 2020 and December 2022*
+
++ We identified: 
+  + *132 countries* 
+  + *156 elections*
+  
+
++ Only focus on **political parties and candidates**
+
+]
+
+&lt;!-- **122 *national* elections** in **101 countries** between --&gt;
+
+.rightcol70[
+![](img/worldmap_coverage2.png)
+
+]
+
+---
+
+class: white
+
+## Methods
+
+.leftcol[
+
++ data annotated &amp; enhanced using the *Party Facts database* *(Döring &amp; Regel 2019)*
+
+  + mainly based on Wikipedia
+  
+  + we hand-coded over 9k advertisers and 900+ parties
+  
+  + 100 top advertisers + 50 random sample per election
+  
++ Multi-source matching 
+
+  + Wikipedia, Google data, also Who Targets Me
+
++ self-tagging of political advertisers
+
+  + *Political party, candidate, politician, government official*
+  
+
+]
+
+
+.rightcol[
+
+&lt;img src="img/pf.png" width="100%"&gt;
+]
+
+
+---
+
+class: white
+
+## Sample Description
+
+.leftcol30[
+
++ All **national-level** elections between *August 2020 and December 2022*
+
++ Time-frame: 3 months before election day
+
+
++ Final sample: 
+  + **95 countries** 
+  + **113 elections** 
+  + 10 countries had no data (e.g. Russia, Iran)
+  + 27 countries no political advertisers (e.g. Venezuela, Niger)
+
+]
+
+&lt;!-- **122 *national* elections** in **101 countries** between --&gt;
+
+.rightcol70[
+![](img/worldmap_coverage25.png)
+
+]
+
+---
+
+class: white
+
+## Majority of Ad Spend is in the US
+
+![](img/barrr.png)
+
+&lt;br&gt;
+
++ Median spent per country: **40k-207k** US Dollar
+
++ Total spent: **418m-643m** US Dollar
+
+
+---
+
+class: white
+
+## Four Targeting and Exclusion Strategies
+
+&lt;center&gt;
+
+&lt;img src="img/fourcats.png" width="85%"&gt;
+
+&lt;/center&gt;
+
+
+---
+
+
+
+
+class: white
+
+## Microtargeting: Combining Criteria
+
+
+.leftcol[
+
+We count targeting and exclusion combinations each time an additional criterion **reduces the audience size**
+
+0 criterias = all ages, all genders, entire country
+
+1 criterion = one interest audience
+
+2 criterias = one interest audiences in specific cities
+
+3 or more = 18-25 year olds, one interest audience in specific cities
+
+]
+
+.rightcol[
+
+&lt;img src="img/fourcats.png" width="100%"&gt;
+
+]
+
+
+
+---
+
+
+class: middle, center
+
+# Results
+
+## RQ1: Global Prevalence and Usage
+
+
+
+---
+
+class: white
+
+#### RQ1: Global Prevalence and Usage
+
+.leftcol40[
+
+&gt; *Targeting more common than excluding*
+
+
++ *Targeting:* Median **80.14%** of budgets are spent on ads with **at least one targeting criterion**
+
++ *Excluding:* Median **8.7%** of budgets are spent on ads with **at least one exclusion criterion**
+]
+
+.rightcol60[
+
+
+&lt;center&gt;
+
+
+&lt;img src="img/targ1.png" width="76%"&gt;
+
+&lt;/center&gt;
+]
+
+---
+
+class: white
+
+#### RQ1: Global Prevalence and Usage
+
+&gt; *Targeting common across geographical regions*
+
+&lt;center&gt;
+
+&lt;img src="img/regionpay.png" width="80%"&gt;
+
+&lt;/center&gt;
+
+---
+
+
+class: white
+
+#### RQ1: Global Prevalence and Usage
+
+&gt; *Most commonly **one** targeting and exclusion criterion used*
+
+
+.leftcol[
+
++ *One Criterion:* Median **38.12%** of budget
+
+
+]
+
+.rightcol[
+
+
++ *Two Criterias:* Median **22.46%** of budget
+
+
+]
+
+
+
+&lt;center&gt;
+
+&lt;img src="img/targ3.png" width="100%"&gt;
+
+&lt;/center&gt;
+
+
+---
+
+class: white
+
+#### RQ1: Global Prevalence and Usage
+
+.leftcol30[
+
+&gt; *Location most prevalent*  
+
+
++ *Location:* Median **46.92%** 
+
++ *Socio-Demographics:* Median **32.22%** 
+
++ *Interests &amp; Behavior:* Median **15.20%** 
+
++ *Custom &amp; Connected Audiences:* Median **16.48%** 
+
+]
+
+.rightcol70[
+
+&lt;center&gt;
+
+
+&lt;img src="img/targ2.png" width="120%"&gt;
+
+&lt;/center&gt;
+
+]
+
+
+---
+
+class: middle, center
+
+# Results
+
+## RQ2: Country Differences
+
+---
+
+class: white
+
+#### RQ2: Country Differences
+
+
++ **Political factors**
+
++ Regulatory factors
+
++ Resource factors
+
+---
+
+class: white
+
+#### Political factors
+  
+&gt; Targeting strategies are common regardless of level of democracy
+
+
+![](img/democ1.png)
+  
+---
+
+
+class: white
+
+#### Political factors
+
+  &gt; Targeting strategies are common regardless of level of democracy
+  
+  
+![](img/democ2.png)
+  
+
+---
+
+class: middle, center
+
+# Results
+
+## RQ3: Party Differences
+
+---
+
+class: white
+
+
+#### RQ3: Party Differences
+
+&gt; Adoption of microtargeting does not differ between political ideology
+
+![](img/ideo1.png)
+---
+
+class: white
+
+
+#### RQ3: Party Differences
+
+&gt; Adoption of microtargeting does not differ between political ideology
+
+![](img/ideo2.png)
+
+---
+
+class: white
+
+#### How do they use (micro)targeting? - Right-leaning parties
+
+
+![](img/targettype_right.png)
+
+---
+
+class: white
+
+#### Detailed Audiences - Right-leaning parties
+
+
+![](img/detailed_right.png)
+
+
+---
+
+
+class: white
+
+#### How do they use (micro)targeting? - Left-leaning parties
+
+
+![](img/targettype_left.png)
+
+---
+
+class: white
+
+#### Detailed Audiences - Left-leaning parties
+
+
+&lt;img src="img/detailed_left.png" width="83%"&gt;
+
+
+---
+
+class: white
+
+#### .font[Top Used Detailed Audiences]
+
+&gt; "Interest in politics" most commonly targeted
+
+&lt;img src="img/topinterests.png" width="72%"&gt;
+
+
+---
+
+
+#### RQ3: Party Differences
+
+
++ **Which parties use microtargeting?**
+
+  + No ideological difference between microtargeting focus
+
+  + Older parties seem more likely use microtargeting strategies
+
++ **How do they use microtargeting?**
+
+  + Parties seem to use microtargeting primarily to reach core audiences
+
+  + Parties seem to ue microtargeting primarily to reach politically involved audiences
+
+
+
+
+---
+
+
+## Conclusions
+
++ Online political **targeting** is **common around the world**
+
+**However:**
+
+  + Most commonly using a single targeting criterion
+    
+  + Most commonly using location and socio-demographics (e.g. age)
+
++ political microtargeting is used **by both left and right**
+
+--
+
+**So is political microtargeting overhyped?**
+
+--
+
++ Its usage in less-democratic countries should make us pause 
+
+--
+
++ parties **target** their respective **core audiences**
+
+  + i.e. concerns about a **fragmented public sphere*** not unfounded *(Van der Meer, 2020)*
+      
++ parties often target people already **interested in politics**
+
+  + i.e. concerns about **"political redlining"** not unfounded *(Howard, 2005)*
+      
+---
+
+## Conclusions
+
++ The **Ad Targeting Dataset** released by Meta is a **step in the right direction** for ad transparency
+
+  + **however**, increases **dependency on Meta, should be seen critical**
+
+  + dataset is **not easily accessible** for researchers, and not at all by civil society
+  
+
++ Stepping stone for **future research**
+  
+  + Content! Targeting *and* tailoring
+
+---
+
+class: middle, center
+
+# Thank you for listening
+
+
+
+
+&lt;div style="text-align: center;"&gt;
+    &lt;div style="display: inline-block; text-align: left;"&gt;
+&lt;p align="left"&gt;&lt;svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;fill:lightgrey;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"&gt;&lt;/path&gt;&lt;/svg&gt;&amp;nbsp;favstats.github.io/ddc2023 (Slides) &lt;br&gt; &lt;svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;fill:blue;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"&gt;&lt;/path&gt;&lt;/svg&gt;&amp;nbsp;favstats &lt;br&gt; &lt;svg viewBox="0 0 448 512" style="height:1em;position:relative;display:inline-block;top:.1em;fill:#615ff7;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M433 179.11c0-97.2-63.71-125.7-63.71-125.7-62.52-28.7-228.56-28.4-290.48 0 0 0-63.72 28.5-63.72 125.7 0 115.7-6.6 259.4 105.63 289.1 40.51 10.7 75.32 13 103.33 11.4 50.81-2.8 79.32-18.1 79.32-18.1l-1.7-36.9s-36.31 11.4-77.12 10.1c-40.41-1.4-83-4.4-89.63-54a102.54 102.54 0 0 1-.9-13.9c85.63 20.9 158.65 9.1 178.75 6.7 56.12-6.7 105-41.3 111.23-72.9 9.8-49.8 9-121.5 9-121.5zm-75.12 125.2h-46.63v-114.2c0-49.7-64-51.6-64 6.9v62.5h-46.33V197c0-58.5-64-56.6-64-6.9v114.2H90.19c0-122.1-5.2-147.9 18.41-175 25.9-28.9 79.82-30.8 103.83 6.1l11.6 19.5 11.6-19.5c24.11-37.1 78.12-34.8 103.83-6.1 23.71 27.3 18.4 53 18.4 175z"&gt;&lt;/path&gt;&lt;/svg&gt;&amp;nbsp;favstats@fosstodon.org &lt;br&gt; &lt;svg viewBox="0 0 448 512" style="height:1em;position:relative;display:inline-block;top:.1em;fill:#0085ff;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48z"&gt;&lt;/path&gt;&lt;/svg&gt;&amp;nbsp;favstats.bsky.social&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+
+
+
+---
+
+class: middle, center
+
+## APPENDIX
+
+
+
+---
+
+
+
+class: white
+
+#### RQ2: Country Differences
+
+
++ Political factors
+
++ Regulatory factors
+
++ Resource and Reach factors
+
+---
+
+class: white
+
+#### Political factors
+  
+&gt; Targeting strategies are common regardless of level of democracy
+
+
+![](img/democ1.png)
+  
+---
+
+
+class: white
+
+#### Political factors
+
+  &gt; Targeting strategies are common regardless of level of democracy
+  
+  
+![](img/democ2.png)
+  
+---
+
+class: white
+
+#### Political factors 
+
+&gt;  Proportional systems seem more likely to use microtargeting strategies than majority systems
+
+![](img/system.png)
+  
+---
+
+
+class: white
+
+#### Regulatory factors 
+
+  &gt; Restrictions on traditional media spending seem to encourage spending on (micro-)targeting
+  
+![](img/limits.png)
+
+---
+
+
+class: white
+
+#### Regulatory factors 
+
+&gt; Countries with stricter data protection laws exhibit more spending on microtargeting
+  
+![](img/protecc.png)
+
+---
+
+
+class: white
+
+#### Resource and Reach factors
+
+&gt; GDP per capita correlates more positively with spending on microtargeting
+
+![](img/gdp1.png)
+
+
+---
+
+class: white
+
+#### Resource and Reach factors
+
+&gt; GDP per capita correlates more positively with spending on (micro-)targeting
+
+
+![](img/gdp2.png)
+
+
+---
+
+class: white
+
+#### Resource and Reach factors
+
+&gt; The more users on the platform as a share of population there is more spending on (micro-)targeting
+
+![](img/ress1.png)
+
+
+---
+
+class: white
+
+
+#### Resource and Reach factors
+
+&gt; The more users on the platform as a share of population there is more spending on (micro-)targeting
+
+![](img/ress2.png)
+
+
+---
+
+
+
+
+
+
+#### RQ2: Country Differences
+
++ **Political factors**
+
+  + Targeting strategies are common regardless of level of democracy
+
+  + Proportional systems seem more likely to use microtargeting strategies than majority systems
+
++ **Regulatory factors**
+
+  + Restrictions on traditional media spending seem to encourage spending on (micro-)targeting
+  
+  + The stricter data protection laws the more spending on microtargeting
+
+
++ **Resource and Reach factors**
+
+  + GDP per capita correlates more positively with spending on (micro-)targeting
+
+  + The more users on the platform as a share of population there is more spending on (micro-)targeting
+
+
+---
+
+
+class: middle, center
+
+# Results
+
+## RQ3: Party Differences
+
+---
+
+class: white
+
+
+#### Which parties use microtargeting?
+
+&gt; Adoption of microtargeting does not differ between political ideology
+
+![](img/ideo1.png)
+---
+
+class: white
+
+
+#### Which parties use microtargeting?
+
+&gt; Adoption of microtargeting does not differ between political ideology
+
+![](img/ideo2.png)
+
+
+---
+
+class: white
+
+#### Which parties use microtargeting?
+
+&gt; Older parties seem more likely use microtargeting strategies
+
+![](img/age1.png)
+
+
+---
+
+
+class: white
+
+#### Which parties use microtargeting?
+
+&gt; Older parties seem more likely use microtargeting strategies
+
+![](img/age2.png)
+
+---
+
+class: white
+
+### European Parliament takes Stance on Political Advertising Regulation
+
+.pull-left[
+
++ Draft legislation on the transparency and targeting of political advertising
+
++ Article 12, §1c:
+
+&gt; Targeting and ad delivery techniques referred to in this paragraph shall **not combine more than four categories of personal data**, including the location of the data subject.
+
+So how much ad spend in EU elections would fall under this proposal?
+
+#### 36.90% or 5.3 million Euros
+
+]
+
+.pull-right[
+
+![](img/spend_on_targeting_five.png)
+
+]
+
+
+
+
+
+---
+
+class: white 
+
+#### RQ2: Who are political parties including and excluding on Meta? (party-level)
+
+.pull-left[
+![](img/spend_per_targeting_overall_0.jpg)
+]
+
+--
+
+.pull-right[
+![](img/spend_per_exclusion_overall.png)
+]
+
+---
+
+class: white
+
+#### RQ2: Who are political parties including and excluding on Meta? (party-level)
+
+![](img/spend_per_age.png)
+
+---
+
+### Data on Ad Targeting I
+
+
++ September 2022: Meta adds "Audience" tab to public Meta Ad Library  
+
+    + Coverage: All countries in which political ads run
+    
+    + Targeting criteria: Age, Gender, Location, Language, "Interests" and "Behaviour", Custom and Lookalike Audiences 
+    
+    + Downside: only available for last 7, 30, and 90 days windows
+    
+    + No possibility to download data (however: I've written an R package `metargetr` to retrieve the data)
+        
+![](img/targeting2.png)
+
+---
+
+#### RQ1 How big is the phenomena of Political Microtargeting?
+
+    
+### First Issue: Meta Ad Targeting Dataset is Messy
+
+*How do we identify political actors advertising on Meta?*
+
+1. Hand-labeled data: Netherlands, Denmark, and Germany
+
+2. Self-identified labels as "political" party/candidate etc.
+
+    - scrape this from the Facebook Ad Library (have done this for 180k+ advertisers)
+    
+![](img/tags.png)
+
+
+---
+
+### Netherlands
+
+![](img/NL)
+
+---
+
+### Germany
+
+![](img/DE)
+
+---
+
+### Denmark
+
+![](img/DK)
+
+---
+
+
+### Second Issue: Which party do advertisers belong to?
+
+1. Matching using party names and abbreviations -&gt; can be messy!
+    + this may include also searching for content of ads
+
+2. (Automated) Wikipedia search (especially for candidates)
+
+3. Let ChatGPT do it? ;')
+
+
+
+---
+
+## Validation of Automated Matching
+
+1. Make sure we are not missing any influential spenders
+    + Retrieve 50 Top Spenders for each election
+    + Retrieve 50 Top Spenders who were automatically not matched
+    + hand-label them
+
+2. From the rest, draw a random sample of 100 matched and non-matched advertisers
+    + hand-label them
+    + make sure we also have smaller advertisers cause they count as well
+    
+20 Elections X 200 Hand-labelling = 4000 coding task
+    
+    
+---
+
+## Questions
+
+Does anyone have ideas about how to
+
+1. maximize coverage (more countries)
+2. keep data quality high (other validation methods)
+
+One other idea: classify with machine learning model that is out there? I know Google can identify names and logos from images.. but can it also identify political party from names?
+
+---
+
+## Conclusion
+
+End the paper with a research agenda: what should we research in the future? 
+
+
+
+**Thanks for listening!**
+
+
+![](https://media3.giphy.com/media/0WHHnRNffwKTo4BvTb/giphy.gif)
+
+
+---
+
+class: middle, center
+
+## Some Rest
+
+
+---
+
+&lt;br&gt;
+
++ February 2021 Meta gives *vetted researchers* access to an "ad targeting dataset"
+
+    + **Actual** targeting criteria used in Social Issue, Electoral, and Political (SIEP) ads on the **ad-level**
+    
+    + through the FORT platform (**F**acebook **O**pen **R**esearch and **T**ransparency) 
+    
+    + Timeframe: August 3rd - November 1st , 2020
+    
+    + Coverage: Only the United States
+    
+    + Difficult to get access
+    
+---
+
+### Previous studies suggest advertisers on Meta primarily target own supporters
+
+**Fowler et al. 2021** conclude in their comprehensive study on Meta ad targeting in the 2018 US midterm election
+
+
+&gt; "all point[s] toward the use of social media ads for **mobilization of existing supporters** as opposed to persuasion of marginal voters"
+
+&lt;!-- based on three factors: --&gt;
+
+&lt;!-- + reduced negativity --&gt;
+&lt;!-- + lower issue content --&gt;
+&lt;!-- + increased partisanship --&gt;
+
+&lt;!-- compared to TV ads --&gt;
+
+**Ridout et al. 2021:**
+
+&gt; More than 50% of ads are **acquisition, fundraising, and mobilization** ads in selected Senate races on Meta.
+
+**Stuckelberger and Koedam 2022:**
+
+&gt; Our analysis across five countries [...] suggests that **coalition maintenance** is the dominant party strategy for demographic groups.
+
+---
+
+class: white
+
+### Evidence that parties target supporters (WTM data)
+
+&lt;img src="img/wtm.png"   width="95%"  /&gt;
+
+---
+
+class: middle, center
+
+## Theories for who gets targeted &amp; 
+## who gets excluded
+
+
+
+---
+
+### Theories for who gets targeted &amp; who gets excluded
+
+
+#### Coalition Maintenance vs. Expansion strategies 
+
+*Based on Rohrschneider 2002; Panagopoulos and Wielhouwer 2008; Stuckelberger and Koedam 2022*
+
+&lt;br&gt;
+
++ **Coalition maintenance strategy** (*"mobilizing"*)
+
+    + Reach out to people who are past and present supporters to strengthen coalition 
+
++  **Coalition expansion strategy** (*"chasing"*)
+
+    + Target people who are potential voters or yet undecided to expand coalition 
+
+
+---
+
+### Theories for who gets targeted &amp; who gets excluded
+
+
+#### **Consideration sets** 
+
+*(Based on Oscarsson and Rosema 2019)*
+
++ Originally a marketing theory on consumer behaviour: 
+    + set of products that consumer would be willing to buy based on certain criteria 
+        + for example, price, brand, etc.
+
+
++ In electoral context: 
+    + set of political parties citizen would vote for based on certain criteria 
+        + e.g. ideological alignment, chances to govern, be in parliament, etc.
+    
+&lt;br&gt;
+    
++ **In targeting context (from perspective of campaigns):**
+    + set of audiences that a party chooses to advertise to 
+        + e.g. based on **issue ownership**, past vote, ideological alignment, etc.
+    + implies: audiences outside of consideration sets should be excluded
+    
+
+---
+
+class: white
+
+### A theory for who gets targeted &amp; who gets excluded
+
+![](img/theory1.png)
+
+---
+
+class: white
+
+### A theory for who gets targeted &amp; who gets excluded
+
+![](img/theory2.png)
+
+
+---
+
+class: white
+
+### A theory for who gets targeted &amp; who gets excluded
+
+![](img/theory3.png)
+
+
+---
+
+class: white
+
+### A theory for who gets targeted &amp; who gets excluded
+
+![](img/theory4.png)
+
+
+---
+
+
+class: white
+
+### A theory for who gets targeted &amp; who gets excluded
+
+![](img/theory5.png)
+
+
+---
+
+## Hypotheses
+
+&gt; Parties target audiences within consideration set
+
+&gt; Parties exclude audiences outside their consideration set
+
+Maybe:
+
+&gt; Smaller parties are more likely to engage in coalition expansion rather than coalition maintenance in an effort to gain votes from bigger competitors
+
+---
+
+
+## Requirements
+
+1. Decide which elections should be studied
+
+    + Suggestion: Netherlands 2021, Germany 2021, Canada 2021, Italy 2022, Sweden 2022, Denmark 2023 (?)
+    + other elections: Lithuania 2020, Portugal 2020, Liechtenstein 2021, Bulgaria 2021, Cyprus 2021, Norway 2021, Iceland 2021, Czech Republic 2021, Hungary 2022, Slovenia 2022
+    
+2. Coding of targeting criteria into 
+    
+    +  **in consideration set**
+        + Supporters                 
+        + Potential voters       
+        
+    +  **outside of consideration set**
+        + People who are not likely to vote for party
+    
+&gt; requires some expertise in studied countries
+
+Question: what about targeting criteria that do not fit in any of these categories?
+
+---
+
+## Who targets who and why but.. also how?
+
++ So this research design does not incorporate at all **which messages** parties use to target people.
+
++ Is this a major flaw? Reasonable compromise?
+
+### More questions
+
+Does the theory idea make sense?
+
+Any other suggestions?
+
+Problem with the theory: what about political parties that want to **demobilize supporters of the opposing party**? That's not accounted for. However: is this even an issue outside of the US?
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"slideNumberFormat": "%current%",
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
